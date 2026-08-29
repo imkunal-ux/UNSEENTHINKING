@@ -1,172 +1,589 @@
+# SHRISANT DAS — Personal Portfolio Website
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Shrisant Das — 19-year-old future entrepreneur, technology enthusiast and multi-experienced creator.">
-<meta name="theme-color" content="#050505">
-<title>SHRISANT DAS — Future Entrepreneur</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-:root{
-  --bg:#030303; --panel:#0a0a0a; --red:#ff1738; --red2:#ff5269;
-  --text:#f5f5f5; --muted:#a5a5a5; --line:rgba(255,23,56,.22);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg); color:var(--text); font-family:"Space Grotesk",sans-serif;
-  overflow-x:hidden;
-}
-body:before{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
-  background:
-    radial-gradient(circle at 80% 15%,rgba(255,23,56,.14),transparent 28%),
-    radial-gradient(circle at 15% 65%,rgba(255,23,56,.08),transparent 25%);
-}
-body:after{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:10; opacity:.035;
-  background-image:linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px);
-  background-size:100% 4px;
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,92%);margin:auto}
-nav{
-  position:fixed; top:0; width:100%; z-index:20; backdrop-filter:blur(14px);
-  background:rgba(3,3,3,.72); border-bottom:1px solid var(--line);
-}
-.navin{height:74px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:Orbitron;font-weight:800;letter-spacing:3px;color:white}
-.logo span{color:var(--red);text-shadow:0 0 16px var(--red)}
-.navlinks{display:flex;gap:28px;color:#c8c8c8;font-size:14px}
-.navlinks a:hover{color:white;text-shadow:0 0 10px var(--red)}
-.hero{min-height:100vh;display:grid;place-items:center;padding-top:74px;position:relative}
-.hero-grid{
-  position:absolute;inset:0;z-index:-1;opacity:.23;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:58px 58px; mask-image:linear-gradient(to bottom,black,transparent 85%);
-}
-.orb{position:absolute;width:430px;height:430px;border-radius:50%;border:1px solid rgba(255,23,56,.18);
-  box-shadow:0 0 90px rgba(255,23,56,.12) inset,0 0 100px rgba(255,23,56,.08);animation:pulse 4s ease-in-out infinite}
-@keyframes pulse{50%{transform:scale(1.06);opacity:.7}}
-.hero-content{text-align:center;max-width:900px}
-.badge{display:inline-block;border:1px solid var(--line);padding:9px 16px;border-radius:999px;
-  color:#ff8999;font-size:12px;letter-spacing:2px;text-transform:uppercase;background:rgba(255,23,56,.05);margin-bottom:24px}
-h1{font-family:Orbitron;font-size:clamp(48px,10vw,108px);line-height:.95;letter-spacing:6px}
-.glow{color:var(--red);text-shadow:0 0 8px var(--red),0 0 28px rgba(255,23,56,.65),0 0 70px rgba(255,23,56,.3)}
-.subtitle{font-size:clamp(18px,3vw,27px);margin:26px 0 12px;color:#ddd}
-.tagline{color:var(--muted);font-size:16px;max-width:650px;margin:auto;line-height:1.8}
-.buttons{margin-top:34px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.btn{padding:13px 22px;border:1px solid var(--red);border-radius:8px;font-weight:600;transition:.25s}
-.btn.primary{background:var(--red);box-shadow:0 0 25px rgba(255,23,56,.3)}
-.btn:hover{transform:translateY(-3px);box-shadow:0 0 28px rgba(255,23,56,.45)}
-.btn.secondary{background:rgba(255,23,56,.04)}
-section{padding:110px 0}
-.section-kicker{font-family:Orbitron;color:var(--red);font-size:12px;letter-spacing:3px;margin-bottom:13px}
-h2{font-family:Orbitron;font-size:clamp(30px,5vw,48px);letter-spacing:2px;margin-bottom:20px}
-.lead{color:#b8b8b8;line-height:1.9;max-width:760px}
-.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:start}
-.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,23,56,.06),rgba(255,255,255,.015));
-  border-radius:16px;padding:28px;box-shadow:0 15px 50px rgba(0,0,0,.25)}
-.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat{padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:#080808}
-.stat b{font-family:Orbitron;color:var(--red);font-size:27px}.stat span{display:block;color:#999;margin-top:7px;font-size:13px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{padding:27px;border:1px solid var(--line);border-radius:14px;background:#070707;transition:.25s}
-.card:hover{transform:translateY(-6px);border-color:rgba(255,23,56,.65);box-shadow:0 0 35px rgba(255,23,56,.12)}
-.icon{font-family:Orbitron;color:var(--red);font-size:14px;margin-bottom:22px;letter-spacing:2px}
-.card h3{margin-bottom:10px;font-size:20px}.card p{color:#999;line-height:1.7;font-size:14px}
-.mindset{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.mind{padding:22px 12px;text-align:center;border:1px solid rgba(255,23,56,.18);border-radius:10px;color:#ddd;font-size:13px}
-.mind strong{display:block;color:var(--red);font-family:Orbitron;font-size:11px;margin-bottom:9px}
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.contact-item{padding:21px;border-bottom:1px solid rgba(255,255,255,.08)}
-.contact-item small{color:#777;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:2px;font-size:10px}
-.contact-item a{color:#eee;word-break:break-word}.contact-item a:hover{color:var(--red)}
-footer{border-top:1px solid var(--line);padding:30px 0;color:#666;text-align:center;font-size:12px;letter-spacing:1px}
-.reveal{opacity:0;transform:translateY(20px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
-@media(max-width:800px){
- .navlinks{display:none}.about-grid,.contact{grid-template-columns:1fr}.cards{grid-template-columns:1fr}
- .mindset{grid-template-columns:1fr 1fr}.hero{min-height:92vh}h1{letter-spacing:2px}
-}
-</style>
+  <title>Shrisant Das | Future Entrepreneur</title>
+
+  <meta name="description" content="Shrisant Das — 19-year-old ambitious future entrepreneur, technology enthusiast and visionary builder.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050807;
+      color: #f1fff5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: rgba(0, 255, 120, 0.08);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -150px;
+      left: -150px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      background: rgba(0, 255, 120, 0.06);
+      filter: blur(120px);
+      border-radius: 50%;
+      right: -150px;
+      bottom: -150px;
+      z-index: -1;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 8, 7, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0, 255, 120, 0.12);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #39ff88;
+      text-shadow: 0 0 15px rgba(57, 255, 136, 0.5);
+    }
+
+    nav a {
+      color: #c8d8ce;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #39ff88;
+      text-shadow: 0 0 12px #39ff88;
+    }
+
+    section {
+      padding: 110px 8%;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      padding-top: 140px;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid rgba(57, 255, 136, 0.4);
+      color: #39ff88;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      background: rgba(57, 255, 136, 0.04);
+      box-shadow: 0 0 20px rgba(57, 255, 136, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(55px, 8vw, 105px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #39ff88;
+      text-shadow:
+        0 0 10px rgba(57,255,136,.4),
+        0 0 40px rgba(57,255,136,.15);
+    }
+
+    .hero p {
+      color: #9eaaa3;
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #39ff88;
+      color: #031007;
+      box-shadow: 0 0 25px rgba(57,255,136,.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(57,255,136,.45);
+    }
+
+    .secondary {
+      border: 1px solid #25372c;
+      color: #e5f5ea;
+      background: rgba(255,255,255,.02);
+    }
+
+    .secondary:hover {
+      border-color: #39ff88;
+      color: #39ff88;
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: 340px;
+      height: 420px;
+      flex-shrink: 0;
+    }
+
+    .photo-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(57,255,136,.35);
+      border-radius: 22px;
+      transform: rotate(4deg);
+      box-shadow: 0 0 35px rgba(57,255,136,.12);
+    }
+
+    .photo-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: -25px;
+      border-radius: 30px;
+      background: rgba(57,255,136,.08);
+      filter: blur(35px);
+      z-index: -1;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(57,255,136,.35);
+      display: block;
+      filter: contrast(1.03);
+    }
+
+    .section-title {
+      font-size: 45px;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .section-title span {
+      color: #39ff88;
+    }
+
+    .section-description {
+      color: #8f9b94;
+      max-width: 700px;
+      margin-bottom: 50px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      padding: 35px;
+      border: 1px solid rgba(57,255,136,.12);
+      background: linear-gradient(
+        145deg,
+        rgba(57,255,136,.045),
+        rgba(255,255,255,.015)
+      );
+      border-radius: 18px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(57,255,136,.35);
+      box-shadow: 0 15px 50px rgba(0,0,0,.3);
+    }
+
+    .card h3 {
+      color: #39ff88;
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #9aa69f;
+    }
+
+    .vision {
+      margin-top: 25px;
+      padding: 55px;
+      border-radius: 25px;
+      border: 1px solid rgba(57,255,136,.18);
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(57,255,136,.1),
+          transparent 40%
+        ),
+        rgba(255,255,255,.015);
+    }
+
+    .vision h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .vision h2 span {
+      color: #39ff88;
+    }
+
+    .vision p {
+      color: #9aa69f;
+      max-width: 850px;
+      font-size: 17px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 70px 30px;
+      border-radius: 25px;
+      border: 1px solid rgba(57,255,136,.18);
+      background: linear-gradient(
+        145deg,
+        rgba(57,255,136,.07),
+        rgba(255,255,255,.015)
+      );
+    }
+
+    .contact-box h2 {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box h2 span {
+      color: #39ff88;
+    }
+
+    .contact-box p {
+      color: #89968e;
+      margin-bottom: 30px;
+    }
+
+    .contacts {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .contact-item {
+      padding: 12px 18px;
+      border: 1px solid rgba(57,255,136,.15);
+      border-radius: 8px;
+      color: #c5d0ca;
+      font-size: 14px;
+      background: rgba(0,0,0,.2);
+    }
+
+    footer {
+      padding: 30px 8%;
+      text-align: center;
+      border-top: 1px solid rgba(57,255,136,.1);
+      color: #68736d;
+      font-size: 13px;
+    }
+
+    footer span {
+      color: #39ff88;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        padding: 18px 5%;
+      }
+
+      nav .links {
+        display: none;
+      }
+
+      section {
+        padding: 90px 6%;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .photo-wrapper {
+        width: 270px;
+        height: 335px;
+      }
+
+      h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .vision {
+        padding: 35px;
+      }
+
+      .contact-box h2 {
+        font-size: 38px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav><div class="container navin">
-  <a class="logo" href="#home">S<span>D</span></a>
-  <div class="navlinks"><a href="#about">ABOUT</a><a href="#experience">EXPERIENCE</a><a href="#mindset">MINDSET</a><a href="#contact">CONTACT</a></div>
-</div></nav>
 
-<main>
-<section class="hero" id="home">
-  <div class="hero-grid"></div><div class="orb"></div>
-  <div class="hero-content reveal">
-    <div class="badge">19 YEARS • FUTURE ENTREPRENEUR • TECH LOVER</div>
-    <h1>SHRISANT<br><span class="glow">DAS</span></h1>
-    <p class="subtitle">Building the future with technology, ideas &amp; mindset.</p>
-    <p class="tagline">A multi-experienced technology enthusiast focused on learning, creating and turning ambitious ideas into real-world projects.</p>
-    <div class="buttons"><a class="btn primary" href="#about">ENTER MY WORLD</a><a class="btn secondary" href="#contact">CONNECT</a></div>
-  </div>
-</section>
+  <nav>
+    <div class="logo">SHRISANT.</div>
 
-<section id="about"><div class="container reveal">
-  <div class="section-kicker">01 / PROFILE</div><h2>THE PERSON<br>BEHIND THE VISION</h2>
-  <div class="about-grid">
-    <div><p class="lead">Shrisant Das is a 19-year-old future entrepreneur with a strong interest in technology, creativity and innovation. His mindset is centered around continuous learning, experimentation and building things that have a purpose.</p>
-    <p class="lead" style="margin-top:18px">From technology and digital projects to creative work, his experience spans multiple areas. The goal is simple: keep learning, keep building, and create a future on his own terms.</p></div>
-    <div class="panel"><div class="statgrid">
-      <div class="stat"><b>19</b><span>YEARS OLD</span></div>
-      <div class="stat"><b>∞</b><span>IDEAS</span></div>
-      <div class="stat"><b>TECH</b><span>PASSION</span></div>
-      <div class="stat"><b>BUILD</b><span>MINDSET</span></div>
-    </div></div>
-  </div>
-</div></section>
-
-<section id="experience"><div class="container reveal">
-  <div class="section-kicker">02 / EXPERIENCE</div><h2>MULTI-EXPERIENCED.<br>ALWAYS LEARNING.</h2>
-  <div class="cards">
-    <div class="card"><div class="icon">01 / TECH</div><h3>Technology</h3><p>Exploring technology, cybersecurity, software and the digital world with a constant focus on learning.</p></div>
-    <div class="card"><div class="icon">02 / CREATIVE</div><h3>Digital Creation</h3><p>Interested in content, visual ideas, websites and digital projects that turn concepts into experiences.</p></div>
-    <div class="card"><div class="icon">03 / ENTREPRENEUR</div><h3>Future Business</h3><p>Developing an entrepreneurial mindset: identify opportunities, solve problems and build useful things.</p></div>
-  </div>
-</div></section>
-
-<section id="mindset"><div class="container reveal">
-  <div class="section-kicker">03 / MINDSET</div><h2>HOW I THINK</h2>
-  <div class="mindset">
-    <div class="mind"><strong>01</strong>THINK DIFFERENTLY</div>
-    <div class="mind"><strong>02</strong>LEARN CONTINUOUSLY</div>
-    <div class="mind"><strong>03</strong>BUILD RELENTLESSLY</div>
-    <div class="mind"><strong>04</strong>EXPERIMENT FEARLESSLY</div>
-    <div class="mind"><strong>05</strong>TURN IDEAS INTO ACTION</div>
-  </div>
-</div></section>
-
-<section id="contact"><div class="container reveal">
-  <div class="section-kicker">04 / CONTACT</div><h2>LET'S CONNECT.</h2>
-  <div class="panel contact">
-    <div>
-      <div class="contact-item"><small>Email</small><a href="mailto:imshrisant21@gmail.com">imshrisant21@gmail.com</a></div>
-      <div class="contact-item"><small>Phone</small><a href="tel:+917980802440">+91 7980802440</a></div>
-      <div class="contact-item"><small>Phone</small><a href="tel:+919875379065">+91 9875379065</a></div>
+    <div class="links">
+      <a href="#about">ABOUT</a>
+      <a href="#vision">VISION</a>
+      <a href="#contact">CONTACT</a>
     </div>
-    <div>
-      <div class="contact-item"><small>Phone</small><a href="tel:+917439188010">+91 7439188010</a></div>
-      <div class="contact-item"><small>Team Contact</small><a href="mailto:teamxlvr@outlook.com">teamxlvr@outlook.com</a></div>
-      <div class="contact-item"><small>Availability</small><span style="color:#aaa">Open to ideas, projects &amp; opportunities.</span></div>
-    </div>
-  </div>
-</div></section>
-</main>
+  </nav>
 
-<footer>© 2026 SHRISANT DAS — BUILT WITH A FUTURE-FOCUSED MINDSET.</footer>
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="tag">ENTREPRENEUR • TECHNOLOGY • VISION</div>
+
+      <h1>
+        SHRISANT<br>
+        <span>DAS.</span>
+      </h1>
+
+      <p>
+        19-year-old ambitious future entrepreneur with a technology-driven
+        mindset, a passion for innovation, and a vision to build something
+        meaningful.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn primary">LET'S CONNECT</a>
+        <a href="#about" class="btn secondary">EXPLORE MY STORY</a>
+      </div>
+
+    </div>
+
+
+    <div class="photo-wrapper">
+      <img src="https://i.imgur.com/fWUprP4.jpeg" alt="Shrisant Das">
+      >
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="section-title">
+      ABOUT <span>ME</span>
+    </h2>
+
+    <p class="section-description">
+      A young mind focused on learning, technology, entrepreneurship and
+      creating opportunities rather than waiting for them.
+    </p>
+
+    <div class="about-grid">
+
+      <div class="card">
+        <h3>01 — AMBITION</h3>
+
+        <p>
+          I believe age is not a limitation when curiosity, discipline and
+          ambition are combined. My goal is to continuously learn, experiment
+          and move closer to building something of real value.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>02 — TECHNOLOGY</h3>
+
+        <p>
+          Technology is one of my biggest interests. I enjoy exploring new
+          ideas, digital tools, artificial intelligence and the possibilities
+          technology creates for the future.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>03 — ENTREPRENEURSHIP</h3>
+
+        <p>
+          Entrepreneurship, to me, is about identifying problems, thinking
+          differently and turning ideas into solutions that people actually
+          find useful.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>04 — MINDSET</h3>
+
+        <p>
+          Think long-term. Learn constantly. Take calculated risks. Build,
+          improve and keep moving forward.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VISION -->
+
+  <section id="vision">
+
+    <div class="vision">
+
+      <h2>
+        BUILDING FOR THE <span>FUTURE.</span>
+      </h2>
+
+      <p>
+        The journey is still at the beginning. The objective is simple:
+        develop the skills, knowledge and mindset required to turn ambitious
+        ideas into meaningful ventures. Every project, experiment and lesson
+        is another step toward that future.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="contact-box">
+
+      <h2>
+        LET'S <span>CONNECT.</span>
+      </h2>
+
+      <p>
+        Have an idea, collaboration or opportunity? Get in touch.
+      </p>
+
+      <a
+        href="mailto:imshrisant21@gmail.com"
+        class="btn primary"
+      >
+        EMAIL ME
+      </a>
+
+      <div class="contacts">
+
+        <div class="contact-item">
+          imshrisant21@gmail.com
+        </div>
+
+        <div class="contact-item">
+          7980802440
+        </div>
+
+        <div class="contact-item">
+          7439188010
+        </div>
+
+        <div class="contact-item">
+          9875379065
+        </div>
+
+        <div class="contact-item">
+          teamxlvro@outlook.com
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 <span>Shrisant Das</span>. Built with ambition.
+  </footer>
+
+
 </body>
 </html>
+```
+
