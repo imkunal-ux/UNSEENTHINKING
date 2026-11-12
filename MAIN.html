@@ -1,0 +1,588 @@
+# SHRISANT DAS — Personal Portfolio Website
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shrisant Das | Future Entrepreneur</title>
+
+  <meta name="description" content="Shrisant Das — 19-year-old ambitious future entrepreneur, technology enthusiast and visionary builder.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050807;
+      color: #f1fff5;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: rgba(0, 255, 120, 0.08);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -150px;
+      left: -150px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      background: rgba(0, 255, 120, 0.06);
+      filter: blur(120px);
+      border-radius: 50%;
+      right: -150px;
+      bottom: -150px;
+      z-index: -1;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 8, 7, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0, 255, 120, 0.12);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #39ff88;
+      text-shadow: 0 0 15px rgba(57, 255, 136, 0.5);
+    }
+
+    nav a {
+      color: #c8d8ce;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #39ff88;
+      text-shadow: 0 0 12px #39ff88;
+    }
+
+    section {
+      padding: 110px 8%;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      padding-top: 140px;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid rgba(57, 255, 136, 0.4);
+      color: #39ff88;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      background: rgba(57, 255, 136, 0.04);
+      box-shadow: 0 0 20px rgba(57, 255, 136, 0.08);
+    }
+
+    h1 {
+      font-size: clamp(55px, 8vw, 105px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #39ff88;
+      text-shadow:
+        0 0 10px rgba(57,255,136,.4),
+        0 0 40px rgba(57,255,136,.15);
+    }
+
+    .hero p {
+      color: #9eaaa3;
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #39ff88;
+      color: #031007;
+      box-shadow: 0 0 25px rgba(57,255,136,.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(57,255,136,.45);
+    }
+
+    .secondary {
+      border: 1px solid #25372c;
+      color: #e5f5ea;
+      background: rgba(255,255,255,.02);
+    }
+
+    .secondary:hover {
+      border-color: #39ff88;
+      color: #39ff88;
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: 340px;
+      height: 420px;
+      flex-shrink: 0;
+    }
+
+    .photo-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(57,255,136,.35);
+      border-radius: 22px;
+      transform: rotate(4deg);
+      box-shadow: 0 0 35px rgba(57,255,136,.12);
+    }
+
+    .photo-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: -25px;
+      border-radius: 30px;
+      background: rgba(57,255,136,.08);
+      filter: blur(35px);
+      z-index: -1;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(57,255,136,.35);
+      display: block;
+      filter: contrast(1.03);
+    }
+
+    .section-title {
+      font-size: 45px;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .section-title span {
+      color: #39ff88;
+    }
+
+    .section-description {
+      color: #8f9b94;
+      max-width: 700px;
+      margin-bottom: 50px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      padding: 35px;
+      border: 1px solid rgba(57,255,136,.12);
+      background: linear-gradient(
+        145deg,
+        rgba(57,255,136,.045),
+        rgba(255,255,255,.015)
+      );
+      border-radius: 18px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(57,255,136,.35);
+      box-shadow: 0 15px 50px rgba(0,0,0,.3);
+    }
+
+    .card h3 {
+      color: #39ff88;
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #9aa69f;
+    }
+
+    .vision {
+      margin-top: 25px;
+      padding: 55px;
+      border-radius: 25px;
+      border: 1px solid rgba(57,255,136,.18);
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(57,255,136,.1),
+          transparent 40%
+        ),
+        rgba(255,255,255,.015);
+    }
+
+    .vision h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .vision h2 span {
+      color: #39ff88;
+    }
+
+    .vision p {
+      color: #9aa69f;
+      max-width: 850px;
+      font-size: 17px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 70px 30px;
+      border-radius: 25px;
+      border: 1px solid rgba(57,255,136,.18);
+      background: linear-gradient(
+        145deg,
+        rgba(57,255,136,.07),
+        rgba(255,255,255,.015)
+      );
+    }
+
+    .contact-box h2 {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box h2 span {
+      color: #39ff88;
+    }
+
+    .contact-box p {
+      color: #89968e;
+      margin-bottom: 30px;
+    }
+
+    .contacts {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .contact-item {
+      padding: 12px 18px;
+      border: 1px solid rgba(57,255,136,.15);
+      border-radius: 8px;
+      color: #c5d0ca;
+      font-size: 14px;
+      background: rgba(0,0,0,.2);
+    }
+
+    footer {
+      padding: 30px 8%;
+      text-align: center;
+      border-top: 1px solid rgba(57,255,136,.1);
+      color: #68736d;
+      font-size: 13px;
+    }
+
+    footer span {
+      color: #39ff88;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        padding: 18px 5%;
+      }
+
+      nav .links {
+        display: none;
+      }
+
+      section {
+        padding: 90px 6%;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .photo-wrapper {
+        width: 270px;
+        height: 335px;
+      }
+
+      h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .vision {
+        padding: 35px;
+      }
+
+      .contact-box h2 {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">SHRISANT.</div>
+
+    <div class="links">
+      <a href="#about">ABOUT</a>
+      <a href="#vision">VISION</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="tag">ENTREPRENEUR • TECHNOLOGY • VISION</div>
+
+      <h1>
+        SHRISANT<br>
+        <span>DAS.</span>
+      </h1>
+
+      <p>
+        19-year-old ambitious future entrepreneur with a technology-driven
+        mindset, a passion for innovation, and a vision to build something
+        meaningful.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn primary">LET'S CONNECT</a>
+        <a href="#about" class="btn secondary">EXPLORE MY STORY</a>
+      </div>
+
+    </div>
+
+
+    <div class="photo-wrapper">
+      <img src="https://i.imgur.com/fWUprP4.jpeg" alt="Shrisant Das">
+      >
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="section-title">
+      ABOUT <span>ME</span>
+    </h2>
+
+    <p class="section-description">
+      A young mind focused on learning, technology, entrepreneurship and
+      creating opportunities rather than waiting for them.
+    </p>
+
+    <div class="about-grid">
+
+      <div class="card">
+        <h3>01 — AMBITION</h3>
+
+        <p>
+          I believe age is not a limitation when curiosity, discipline and
+          ambition are combined. My goal is to continuously learn, experiment
+          and move closer to building something of real value.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>02 — TECHNOLOGY</h3>
+
+        <p>
+          Technology is one of my biggest interests. I enjoy exploring new
+          ideas, digital tools, artificial intelligence and the possibilities
+          technology creates for the future.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>03 — ENTREPRENEURSHIP</h3>
+
+        <p>
+          Entrepreneurship, to me, is about identifying problems, thinking
+          differently and turning ideas into solutions that people actually
+          find useful.
+        </p>
+      </div>
+
+
+      <div class="card">
+        <h3>04 — MINDSET</h3>
+
+        <p>
+          Think long-term. Learn constantly. Take calculated risks. Build,
+          improve and keep moving forward.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VISION -->
+
+  <section id="vision">
+
+    <div class="vision">
+
+      <h2>
+        BUILDING FOR THE <span>FUTURE.</span>
+      </h2>
+
+      <p>
+        The journey is still at the beginning. The objective is simple:
+        develop the skills, knowledge and mindset required to turn ambitious
+        ideas into meaningful ventures. Every project, experiment and lesson
+        is another step toward that future.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="contact-box">
+
+      <h2>
+        LET'S <span>CONNECT.</span>
+      </h2>
+
+      <p>
+        Have an idea, collaboration or opportunity? Get in touch.
+      </p>
+
+      <a
+        href="mailto:imshrisant21@gmail.com"
+        class="btn primary"
+      >
+        EMAIL ME
+      </a>
+
+      <div class="contacts">
+
+        <div class="contact-item">
+          imshrisant21@gmail.com
+        </div>
+
+        <div class="contact-item">
+          7980802440
+        </div>
+
+        <div class="contact-item">
+          7439188010
+        </div>
+
+        <div class="contact-item">
+          9875379065
+        </div>
+
+        <div class="contact-item">
+          teamxlvro@outlook.com
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 <span>Shrisant Das</span>. Built with ambition.
+  </footer>
+
+
+</body>
+</html>
+```
